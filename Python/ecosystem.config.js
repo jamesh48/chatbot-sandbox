@@ -13,7 +13,7 @@ module.exports = {
       key: keyPath,
       ref: 'origin/main'  ,
       repo: 'git@github.com:jamesh48/chatbot-sandbox.git',
-      path: '/home/ubuntu/chatbot-sandbox/Python',
+      path: '/home/ubuntu',
       'post-deploy': 'pm2 startOrRestart ecosystem.config.js'
     }
   }
