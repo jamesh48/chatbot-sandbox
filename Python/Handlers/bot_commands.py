@@ -1,5 +1,6 @@
 from bot import bot
 import discord
+import requests
 from discord.ext import commands
 import random
 
@@ -37,3 +38,11 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     for _ in range(number_of_dice)
   ]
   await ctx.send(', '.join(dice))
+
+#Trivia Command
+@bot.command(name='trivia', help='Sends a Trivia Question about animals!')
+async def trivia(ctx):
+  r = requests.get('https://opentdb.com/api.php?amount=1&category=27&difficulty=easy&type=boolean')
+  test = r.json()['results'][0]['question']
+
+  await ctx.send(test)

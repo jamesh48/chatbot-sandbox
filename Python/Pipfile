@@ -5,8 +5,9 @@ name = "pypi"
 
 [scripts]
 start = 'nodemon --exec  python3 main.py'
-
+login = 'bash login.sh'
 [packages]
+requests = "*"
 
 [dev-packages]
 

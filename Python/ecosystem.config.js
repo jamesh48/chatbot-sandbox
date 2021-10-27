@@ -1,23 +1,20 @@
-module.exports = {
-  apps : [{
-    name: 'python-chat-bot'
-    script: '',
-    watch: true
-  }, {
-    script: './service-worker/',
-    watch: ['./service-worker']
-  }],
 
-  deploy : {
-    production : {
-      user : 'SSH_USERNAME',
-      host : 'SSH_HOSTMACHINE',
-      ref  : 'origin/master',
-      repo : 'GIT_REPOSITORY',
-      path : 'DESTINATION_PATH',
-      'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+const path = require('path');
+let keyPath = path.resolve('python-chat-bot.pem')
+module.exports = {
+  apps: [{
+    name: 'chatbot-sandbox',
+    script: path.resolve('main.py')
+  }],
+  deploy: {
+    production: {
+      user: 'ubuntu',
+      host: 'ec2-52-15-36-81.us-east-2.compute.amazonaws.com',
+      key: keyPath,
+      ref: 'origin/main'  ,
+      repo: 'git@github.com:jamesh48/chatbot-sandbox.git',
+      path: '/home/ubuntu/chatbot-sandbox',
+      'post-deploy': 'pm2 startOrRestart ecosystem.config.js'
     }
   }
-};
+}
