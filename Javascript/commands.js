@@ -22,10 +22,12 @@ module.exports = {
       receivedMessage.channel.send("It looks like you need help with... " + args.join(' '))
     }
   },
+
   pingPongCommand: (receivedMessage) => {
     receivedMessage.react('🏓')
     receivedMessage.channel.send('PONG!');
   },
+
   multiplyCommand: (args, receivedMessage) => {
     if (args.length < 2) {
       receivedMessage.channel.send("Not enough arguments, Try `!multiply 5 10`");
