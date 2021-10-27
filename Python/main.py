@@ -2,7 +2,9 @@ import os
 import random
 from discord.ext.commands.core import command
 from dotenv import load_dotenv
+
 import Handlers.bot_events
+import Handlers.bot_admin_commands
 import Handlers.bot_commands
 
 #1

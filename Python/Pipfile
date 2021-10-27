@@ -6,8 +6,11 @@ name = "pypi"
 [scripts]
 start = 'nodemon --exec  python3 main.py'
 login = 'bash login.sh'
+deploy = 'pm2 deploy ecosystem.config.js production'
+
 [packages]
 requests = "*"
+discord = "*"
 
 [dev-packages]
 
