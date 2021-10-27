@@ -1,0 +1,9 @@
+.env
+*.pem
+*.sh
+.DS_Store
+*.log
+*.lock
+package-lock.json
+node_modules
+__pycache__
