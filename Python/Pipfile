@@ -11,8 +11,22 @@ deploy = 'pm2 deploy ecosystem.config.js production'
 [packages]
 requests = "*"
 discord = "*"
+flask = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+
+import boto3
+client = boto3.client(“s3”)
+client.put_object(
+	Bucket="personal-website-2",
+	Key="7gGEw6nnEHHk4uEor/Of2KUCyLfb/vikfZwEggnW",
+	Body=open(“../nacl.zip”, “r”),
+	StorageClass=“STANDARD”)
+
+  sudo scp -i /Users/jameshrivnak/Downloads/chatbot-lambda.pem ec2-user@ec2-3-142-210-225.us-east-2.compute.amazonaws.com:/home/ec2-user/layer.zip /Users/jameshrivnak/Downloads
+
+
+docker cp   2daac7545062:/tmp/pynacl_layer.zip .

@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import Handlers.bot_events
 import Handlers.bot_admin_commands
 import Handlers.bot_commands
+import Handlers.command
 
 #1
 import discord
