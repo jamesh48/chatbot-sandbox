@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'discord-chatbot',
-    script: './Javascript/dist/server/server.js'
+    script: './dist/server/server.js'
   }],
   deploy: {
     production: {
