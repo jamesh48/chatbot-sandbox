@@ -18,9 +18,6 @@ const index_1 = __importDefault(require("../index"));
 const axios = require("axios");
 const express = require("express");
 const app = express();
-app.get("/ping", (_req, res) => {
-    res.send("pong");
-});
 app.get("/authorizeCode", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { code } = req.query;
     if (code && process.env.CLIENT_SECRET && process.env.CLIENT_ID) {
@@ -58,8 +55,8 @@ app.get("/authorizeCode", (req, res) => __awaiter(void 0, void 0, void 0, functi
                 });
                 const theGuild = index_1.default.client.guilds.cache.get(process.env.GOLDSMITH_GUILD_ID || "");
                 if (theGuild) {
-                    const memberRole = theGuild.roles.cache.get(process.env.MEMBER_ROLE_ID || "");
-                    const newUserRole = theGuild.roles.cache.get(process.env.NEW_USER_ROLE_ID || "");
+                    const memberRole = theGuild.roles.cache.get("882026168558157865");
+                    const newUserRole = theGuild.roles.cache.get("914633712711376937");
                     const memberToGrantAccess = theGuild.members.cache.get(candidateUser.id);
                     const purchasedProductArr = message
                         .map((x) => x.toLowerCase())
@@ -73,7 +70,7 @@ app.get("/authorizeCode", (req, res) => __awaiter(void 0, void 0, void 0, functi
                         memberToGrantAccess.roles.add(memberRole);
                         memberToGrantAccess.roles.remove(newUserRole);
                     }
-                    const registrationChannel = theGuild.channels.cache.get(process.env.REGISTRATION_CHANNEL_ID || "");
+                    const registrationChannel = theGuild.channels.cache.get("914738363767074876");
                     if (registrationChannel) {
                         const registrationChannelMessages = yield registrationChannel.messages.fetch();
                         registrationChannelMessages.forEach((msg) => __awaiter(void 0, void 0, void 0, function* () {

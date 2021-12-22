@@ -8,6 +8,10 @@ import express = require("express");
 import { AxiosResponse } from "axios";
 const app = express();
 
+app.get("/ping", (_req: any, res: Response) => {
+  res.send("pong");
+});
+
 app.get("/authorizeCode", async (req: any, res: Response) => {
   const { code } = req.query;
 
@@ -58,11 +62,11 @@ app.get("/authorizeCode", async (req: any, res: Response) => {
 
         if (theGuild) {
           const memberRole = theGuild.roles.cache.get(
-            /*Member Role*/ "882026168558157865"
+            /*Member Role*/ process.env.MEMBER_ROLE_ID || ""
           );
 
           const newUserRole = theGuild.roles.cache.get(
-            /*New User Role*/ "914633712711376937"
+            /*New User Role*/ process.env.NEW_USER_ROLE_ID || ""
           );
           const memberToGrantAccess = theGuild.members.cache.get(
             candidateUser.id
@@ -83,8 +87,9 @@ app.get("/authorizeCode", async (req: any, res: Response) => {
             memberToGrantAccess.roles.remove(newUserRole);
           }
 
-          const registrationChannel: any =
-            theGuild.channels.cache.get("914738363767074876");
+          const registrationChannel: any = theGuild.channels.cache.get(
+            process.env.REGISTRATION_CHANNEL_ID || ""
+          );
 
           if (registrationChannel) {
             const registrationChannelMessages =
