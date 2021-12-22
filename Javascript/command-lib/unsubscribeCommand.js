@@ -8,7 +8,7 @@ module.exports = async (
 ) => {
   if (!memberToKick.kickable)
     return memberToKick.send(
-      "2Sides has insufficient permissions to unsubscribe you. Contact an Admin please"
+      "MagicWand has insufficient permissions to unsubscribe you. Contact an Admin please"
     );
 
   await revokeCommand(theGuild, memberToKick, memberEmail);

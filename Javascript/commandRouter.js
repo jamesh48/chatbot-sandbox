@@ -19,21 +19,7 @@ module.exports = async (receivedMessage, theGuild, validatedMember) => {
 
     if (primaryCommand === "enablechannelaccess") {
       await registerCommand(theGuild, validatedMember, email);
-    } else if (primaryCommand === "unsubscribe") {
-      unsubscribeCommand(theGuild, validatedMember, email);
-    } else if (primaryCommand === "revoke") {
-      await revokeCommand(theGuild, validatedMember, email);
     }
     return;
-  }
-
-  if (primaryCommand === "help") {
-    await helpCommand(validatedMember, args);
-  } else if (primaryCommand === "ping") {
-    await pingPongCommand(validatedMember);
-  } else if (primaryCommand === "coinflip") {
-    await coinFlipCommand(validatedMember)
-  } else {
-    validatedMember.send("Unknown command, try `!help`");
   }
 };

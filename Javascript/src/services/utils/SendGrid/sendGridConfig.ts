@@ -1,8 +1,14 @@
-require("dotenv");
+require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
 
-module.exports = (_to, validationLink, channelsToJoin, username, callback) => {
+const sendEmail = (
+  _to: string,
+  validationLink: string,
+  channelsToJoin: string[],
+  username: string,
+  callback: (msg: string) => void
+) => {
   const _subject = "Verify your email with the Danny Goldsmith Magic Discord!";
   const msg = {
     to: _to,
@@ -20,7 +26,7 @@ module.exports = (_to, validationLink, channelsToJoin, username, callback) => {
                 <p>Best...</p>
                 <p>Magic Wand</p>
               </div>
-           <div>`,
+           <div>`
   };
 
   sgMail.send(msg).then(
@@ -28,7 +34,7 @@ module.exports = (_to, validationLink, channelsToJoin, username, callback) => {
       callback(`I sent you an email, with a link to secure your access to these channels: ${channelsToJoin}
                   Exisiting channels will remain enabled.`);
     },
-    (error) => {
+    (error: any) => {
       if (error.response) {
         console.error(error.response.body);
         callback("I'm sorry, I was unable to send a verification e-mail");
@@ -36,3 +42,5 @@ module.exports = (_to, validationLink, channelsToJoin, username, callback) => {
     }
   );
 };
+
+export default sendEmail;

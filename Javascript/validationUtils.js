@@ -21,17 +21,9 @@ module.exports.validateMember = (theGuild, receivedAuthorId) => {
 };
 
 module.exports.confirmReceivedMessage = async (receivedMessage) => {
-  if (receivedMessage.content.startsWith("!")) {
-    await receivedMessage.channel.send(
-      "Message received: " +
-        receivedMessage.author.toString() +
-        ": " +
-        receivedMessage.content
-    );
-  } else {
-    throw new Error(`Please prefix your query with a !
-                      -For a full list of available queries send !help`);
-  }
+  // Confirm that it is in the correct channel, otherwise don't respond.
+  console.log(receivedMessage);
+  return;
 };
 
 module.exports.processCommandArgs = (receivedMessage) => {
