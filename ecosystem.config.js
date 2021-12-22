@@ -11,7 +11,7 @@ module.exports = {
       ref: 'origin/main',
       repo: 'git@github.com:jamesh48/chatbot-sandbox.git',
       path: '/home/ubuntu/chatbot-sandbox',
-      'post-deploy': 'cd Javascript && npm install && cd ../ && pm2 startOrRestart ecosystem.config.js'
+      'post-deploy': 'cd Javascript && npm install && pm2 startOrRestart ../ecosystem.config.js'
     }
   }
 }
