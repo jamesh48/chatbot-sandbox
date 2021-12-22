@@ -55,8 +55,7 @@ let Bot = class Bot {
                 });
             }
         });
-        this.client.on("guildMemberAdd", (member) => __awaiter(this, void 0, void 0, function* () {
-            const incomingDiscordID = member.user.id;
+        this.client.on("guildMemberAdd", (_member) => __awaiter(this, void 0, void 0, function* () {
             const theGuild = this.client.guilds.cache.get(this.GuildID);
             if (theGuild) {
                 const registrationChannel = theGuild.channels.cache.get(this.registrationChannelID);
@@ -67,9 +66,8 @@ let Bot = class Bot {
                             .setTitle("Authorize Access")
                             .setAuthor("Magic Wand")
                             .setURL(this.discordAuthorizeURI)
-                            .setDescription("Please verify that the email that you use for discord is the same you bought dannygoldsmithmagic.com products with before clicking, if not please contact an admin\n\n" +
-                            incomingDiscordID)
-                            .setFooter("You are awesome")
+                            .setDescription("Please verify that the email that you use for discord is the same you bought dannygoldsmithmagic.com products with before clicking, if not please contact an admin")
+                            .setFooter("By the way, you are awesome")
                             .setTimestamp();
                         yield registrationChannel.send({ embeds: [authorizeEmbed] });
                     }), 25000);

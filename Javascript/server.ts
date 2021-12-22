@@ -7,6 +7,10 @@ import express = require("express");
 import { AxiosResponse } from "axios";
 const app = express();
 
+app.get("/ping", (req: any, res: Response) => {
+  res.send("pong");
+});
+
 app.get("/authorizeCode", async (req: any, res: Response) => {
   console.log("AUTHORIZE CODE");
   const { code } = req.query;

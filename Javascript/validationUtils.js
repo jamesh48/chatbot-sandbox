@@ -20,12 +20,6 @@ module.exports.validateMember = (theGuild, receivedAuthorId) => {
   }
 };
 
-module.exports.confirmReceivedMessage = async (receivedMessage) => {
-  // Confirm that it is in the correct channel, otherwise don't respond.
-  console.log(receivedMessage);
-  return;
-};
-
 module.exports.processCommandArgs = (receivedMessage) => {
   const fullCommand = receivedMessage.content.substr(1);
   const splitCommand = fullCommand.split(" ");
