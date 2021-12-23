@@ -18,8 +18,10 @@ const index_1 = __importDefault(require("../index"));
 const axios = require("axios");
 const express = require("express");
 const app = express();
-app.get("/ping", (_req, res) => {
-    res.send("pong");
+app.get("/assignBadge", (req, res) => {
+    console.log(req);
+    console.log(req.query);
+    res.send("ok");
 });
 app.get("/authorizeCode", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { code } = req.query;
