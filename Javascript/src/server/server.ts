@@ -8,7 +8,7 @@ import express = require("express");
 import { AxiosResponse } from "axios";
 const app = express();
 
-app.get("/assignBadge", (req: any, res: Response) => {
+app.post("/assignBadge", (req: any, res: Response) => {
   console.log(req);
   console.log(req.query);
   res.send("ok");

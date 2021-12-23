@@ -18,7 +18,7 @@ const index_1 = __importDefault(require("../index"));
 const axios = require("axios");
 const express = require("express");
 const app = express();
-app.get("/assignBadge", (req, res) => {
+app.post("/assignBadge", (req, res) => {
     console.log(req);
     console.log(req.query);
     res.send("ok");
