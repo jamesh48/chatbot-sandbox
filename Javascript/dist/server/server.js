@@ -18,8 +18,10 @@ const index_1 = __importDefault(require("../index"));
 const axios = require("axios");
 const express = require("express");
 const app = express();
+app.use(express.json());
 app.post("/assignBadge", (req, res) => {
-    console.log(req);
+    console.log(req.body);
+    console.log(req.params);
     console.log(req.query);
     res.send("ok");
 });
